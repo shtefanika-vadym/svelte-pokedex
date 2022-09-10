@@ -1,0 +1,11 @@
+:root {
+  --color-light: #f2f2f7;
+  --color-dark: #272322;
+}
+
+body {
+  margin: 0;
+  width: 100vw;
+  box-sizing: border-box;
+  font-family: Inter, sans-serif;
+}

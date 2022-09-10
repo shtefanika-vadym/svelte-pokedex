@@ -1,0 +1,48 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "ecmaVersion": 2019,
+    "sourceType": "module"
+  },
+  "plugins": ["svelte3", "eslint-plugin-import-helpers"],
+  "extends": ["eslint:recommended"],
+  "overrides": [
+    {
+      "files": ["**/*.svelte"],
+      "processor": "svelte3/svelte3"
+    }
+  ],
+  "rules": {
+    "curly": ["off"],
+    "no-shadow": "off",
+    "no-param-reassign": ["error", { "props": false }],
+    "no-underscore-dangle": "off",
+    "no-console": "off",
+    "no-unused-vars": "off",
+    "no-multiple-empty-lines": ["error", { "max": 2 }],
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ],
+    "import-helpers/order-imports": [
+      "error",
+      {
+        "newlinesBetween": "always",
+        "groups": [
+          "module",
+          "/assets/",
+          "/common/",
+          "/features/",
+          ["parent", "sibling", "index", "absolute"]
+        ],
+        "alphabetize": { "order": "asc", "ignoreCase": true }
+      }
+    ]
+  }
+}
