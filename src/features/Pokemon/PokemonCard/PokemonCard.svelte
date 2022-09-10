@@ -1,8 +1,10 @@
 <script>
-  import { onMount } from 'svelte'
+  import { createEventDispatcher, onMount } from 'svelte'
+
+  const dispatch = createEventDispatcher()
 
   export let pokemonData
-  export let handleClick = (pokemonDetails) => {}
+  export let pokemonClick = () => {}
 
   let pokemonDetails
 
@@ -11,9 +13,13 @@
     const pokemonInfo = await response.json()
     pokemonDetails = pokemonInfo
   })
+
+  function handleClickOnPokemon() {
+    dispatch('pokemonClick', pokemonDetails)
+  }
 </script>
 
-<div on:click={handleClick(pokemonDetails)} class="card">
+<div on:click={handleClickOnPokemon} class="card">
   <div
     class="card-header"
     style="background-image: url({pokemonDetails?.sprites?.other?.dream_world?.front_default})" />

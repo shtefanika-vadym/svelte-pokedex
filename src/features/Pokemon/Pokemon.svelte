@@ -12,8 +12,8 @@
     return pokemons.filter((pokemon) => pokemon.name.toLowerCase().includes(name.toLowerCase()))
   }
 
-  function handleClickOnPokemon(pokemonDetails) {
-    console.log(pokemonDetails)
+  function handleClickOnPokemon(event) {
+    console.log(event.detail)
   }
 
   onMount(async () => {
@@ -37,7 +37,7 @@
   <div class="pokemon-list">
     {#if filteredPokemonData.length > 0}
       {#each filteredPokemonData as pokemon}
-        <PokemonCard handleClick={handleClickOnPokemon} pokemonData={pokemon} />
+        <PokemonCard on:pokemonClick={handleClickOnPokemon} pokemonData={pokemon} />
       {/each}
     {:else}
       <h3>No pokemon was found by name {filterValue}</h3>
